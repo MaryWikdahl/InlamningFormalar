@@ -36,12 +36,10 @@ function validatepassword(){
  
     e.target.classList.add("is-invalid");
     document.getElementById(`${e.target.id}-error`).style.display= "block"
-    checkvalidform(forms)
 }
 else {
     e.target.classList.remove("is-invalid");
     document.getElementById(`${e.target.id}-error`).style.display= "none"
-    checkvalidform(forms)
 }
     })
 }
@@ -70,7 +68,6 @@ function handlezipcode (){
     if (validatezipcode(e.target.value)){
         e.target.classList.add("is-invalid");
         document.getElementById(`zipcode-error`).style.display= "block"
-        checkvalidform(forms)
     }
 
     else {
@@ -88,12 +85,10 @@ function setEventListeners() {
                     if(!minvalidvalue(e.target.value)) {
                         e.target.classList.add("is-invalid");
                         document.getElementById(`${e.target.id}-error`).style.display= "block"
-                        checkvalidform(forms)
                     }
                     else {
                         e.target.classList.remove("is-invalid");
                         document.getElementById(`${e.target.id}-error`).style.display= "none"
-                        checkvalidform(forms)
                     }
                 })
                 break;
@@ -102,12 +97,10 @@ function setEventListeners() {
                         if(!minvalidvalue(e.target.value)) {
                             e.target.classList.add("is-invalid");
                             document.getElementById(`${e.target.id}-error`).style.display= "block"
-                            checkvalidform(forms)
                         }
                         else {
                             e.target.classList.remove("is-invalid");
                             document.getElementById(`${e.target.id}-error`).style.display= "none"
-                            checkvalidform(forms)
                         }
                     })
                     break;
@@ -117,12 +110,10 @@ function setEventListeners() {
                 if(!validpassword(e.target.value)) {
                     e.target.classList.add("is-invalid");
                     document.getElementById(`${e.target.id}-error`).style.display= "block"
-                    checkvalidform(forms)
                 }
                 else {
                     e.target.classList.remove("is-invalid");
                     document.getElementById(`${e.target.id}-error`).style.display= "none"
-                    checkvalidform(forms)
                 }
             })
             break;
@@ -132,12 +123,10 @@ function setEventListeners() {
                 if(!validemail(e.target.value)) {
                     e.target.classList.add("is-invalid");
                     document.getElementById(`${e.target.id}-error`).style.display= "block"
-                    checkvalidform(forms)
                 }
                 else {
                     e.target.classList.remove("is-invalid");
                     document.getElementById(`${e.target.id}-error`).style.display= "none"
-                    checkvalidform(forms)
                 }
             })
             break;
@@ -145,14 +134,9 @@ function setEventListeners() {
     })
 }
 
-
-
-// populateYearSelector();
 populateSelector("yearselector", 1921, 2021)
 populateSelector("monthselector", 1, 12)
 populateSelector("dayselector", 1, 31)
-
-
 function populateSelector(selectorId, to, from){
     const selector = document.getElementById(selectorId);
 
@@ -164,27 +148,14 @@ function populateSelector(selectorId, to, from){
     }
 }
 
-
-
-function setselectorListener(){
-
-const agevalidation = document.querySelectorAll(".agevalidation")
-agevalidation.forEach(element => {
-    element.addEventListener("change", function(e){
-    validateAge()
-    })
-})
-}
-
-
 function validateAge (){
     const todayYear = new Date().getFullYear();
     const todayMonth = new Date().getMonth() + 1;
     const todayDay = new Date().getDate();
 
-    const year =document.getElementById("yearselector").value
-    const month =document.getElementById("monthselector").value
-    const day =document.getElementById("dayselector").value
+    const year = document.getElementById("yearselector").value
+    const month = document.getElementById("monthselector").value
+    const day = document.getElementById("dayselector").value
     if(isNaN(year) || isNaN(month) || isNaN(day) ) {
         return;
     }
@@ -202,6 +173,15 @@ function validateAge (){
   
 }
 
+function setselectorListener(){
+    const agevalidation = document.querySelectorAll(".agevalidation")
+    agevalidation.forEach(element => {
+        element.addEventListener("change", function(e){
+        validateAge()
+        })
+    })
+}
+
 function dateDiffInDays(todaysDate, birthDate) {
     var difference = todaysDate.getTime() - birthDate.getTime();
     
@@ -209,9 +189,3 @@ function dateDiffInDays(todaysDate, birthDate) {
   }
  
 
-function adresstext(){
-  const adresstext = document.getElementById("adress")
-  adresstext.addEventListener("click", function (e){
-  document.getElementById(`${e.target.id}-text`).style.display= "block"
-  })
-}
